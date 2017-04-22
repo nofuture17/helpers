@@ -1,0 +1,18 @@
+{
+    "name": "nofuture17/helpers",
+    "description": "static helpers",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "nofuture17",
+            "email": "ar2041@bk.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "nofuture17\\helpers\\": "src"
+        }
+    }
+}
