@@ -49,4 +49,27 @@ class Objects
             $reflection->setAccessible($modifiers);
         }
     }
+
+    /**
+     * Создаёт объект из указанных данных
+     * В качестве данных может быть строка с именем класса или
+     * массив конфигурации с ключами class и config
+     * @param string|array $data
+     * @return mixed
+     */
+    public static function createObject($data)
+    {
+        if (is_string($data)) {
+            $object = new $data();
+        } elseif (is_array($data) && !empty($data['class']) && class_exists($data['class'])) {
+            $object = new $data['class']();
+            if (!empty($data['config']) && is_array($data['config'])) {
+                static::configure($object, $data['config']);
+            }
+        } else {
+            return null;
+        }
+
+        return $object;
+    }
 }
